@@ -53,11 +53,16 @@ int main() {
 	badPtr = doBadThings();
 	// doesn't crash til we try to go to what badPtr points to
 	// uncomment next line to see program with seg fault
-	//cout << *badPtr << endl; 
+	cout << *badPtr << endl;
+	 
+	// note: you'll see a compiler warning when you compile this code warning you not to return the mem address of a local variable
+	// a good practice is to compile with g++ -Wall Main.cpp
+	// -Wall flag means show all warnings
+	// try it on this code with line "cout << *badPtr << endl;" commented... what other warning is there?
 	
 	// 3. USING GDB TO DEBUG A PROGRAM
 	// remember how I said "cout is your friend" and you can use it to trace your program and isolate where a seg fault is occurring?
-	// here is another, more practical way to find which line of code is causing the seg fault (line 12 in this example)
+	// here is another, more practical way to find which line of code is causing the seg fault (line "cout << *badPtr << endl;" in this example)
 	// compile with -g
 	// e.g. g++ -g Main.cpp
 	// this puts "debugging symbols" into the exectuable that GDB needs to debug your program
@@ -72,8 +77,8 @@ int main() {
 	Starting program: /home/student/Desktop/CPSC122/DebuggingFun/a.out 
 
 	Program received signal SIGSEGV, Segmentation fault.
-	0x0000555555555192 in main () at Main.cpp:12
-	12              cout << *badPtr << endl; 
+	0x0000555555555192 in main () at Main.cpp:56
+	56              cout << *badPtr << endl; 
 	*/
 	// type q or hit CTRL + D to exit GDB
 
